@@ -60,10 +60,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - images/bird.jpg
-   - images/parakeet.jpg
-   - images/seagull.jpg
-   - images/tucan.jpg
+   - images/blackbird.jpg
+   - images/chickadee.jpg
+   - images/ducks.jpg
+   - images/kingfisher.jpg
+   - images/nuthatch.jpg
+   - images/owl.jpg
+   - images/robin.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

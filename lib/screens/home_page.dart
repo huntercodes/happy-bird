@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Happy Monday',
+              getHappyDayMessage(),
               style: TextStyle(
                 fontFamily: 'Source Sans Pro',
                 color: Colors.teal.shade100,
@@ -39,18 +39,26 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                child: Image(
-                  image: AssetImage('images/tucan.jpg'),
-                ),
+                child: Image.asset(getImageFileName())
               ),
             ),
             Text(
-              'Parakeet',
+              getBirdName(),
               style: TextStyle(
                 fontSize: 40.0,
                 fontFamily: 'Pacifico',
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              getBirdSubtitle(),
+              style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: 'Source Sans Pro',
+                color: Colors.teal.shade100,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2.5,
               ),
             ),
             SizedBox(
@@ -59,7 +67,7 @@ class HomePage extends StatelessWidget {
               child: Divider(
                 color: Colors.teal.shade100,
               ),
-            )
+            ),
             Card(
               margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
               child: ListTile(
@@ -68,7 +76,7 @@ class HomePage extends StatelessWidget {
                   color: Colors.teal,
                 ),
                 title: Text(
-                  'Forages in trunks and larger tree limbs',
+                  getBirdMessage(),
                   style: TextStyle(
                     color: Colors.teal.shade900,
                     fontFamily: 'Source Sans Pro',
@@ -82,4 +90,87 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  String getHappyDayMessage() {
+    String happyDayMessage = 'Happy ${getDayName()}!';
+    return happyDayMessage;
+  }
+
+  int getNumDay() {
+    DateTime date = DateTime.now();
+    int currentNumDay = date.weekday;
+    currentNumDay = currentNumDay;
+    return currentNumDay;
+  }
+
+  String getDayName() {
+    String dayName;
+    List<String> dayStrArr = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
+    ];
+    dayName = dayStrArr[getNumDay() - 1];
+    return dayName;
+  }
+
+  String getImageFileName() {
+    String imageFileName;
+    List<String> imageStrArr = [
+      'images/kingfisher.jpg',
+      'images/robin.jpg',
+      'images/chickadee.jpg',
+      'images/nuthatch.jpg',
+      'images/ducks.jpg',
+      'images/owl.jpg',
+      'images/blackbird.jpg'
+    ];
+    imageFileName = imageStrArr[getNumDay() - 1];
+    return imageFileName;
+  }
+
+  String getBirdSubtitle() {
+    String birdSubtitle;
+    List<String> subtitleStrArr = [
+      'Blue',
+      'European',
+      'Black-capped',
+      'White-breasted',
+      'Mallard',
+      'Gray',
+      'Red-winged'
+    ];
+    birdSubtitle = subtitleStrArr[getNumDay() - 1];
+    return birdSubtitle;
+  }
+
+  String getBirdMessage() {
+    String birdMessage;
+    List<String> messageStrArr = [
+      'Plunges headfirst into water to fish',
+      'Early bird, sings at dawn',
+      'Can be tamed and hand fed',
+      'Forages in trunks and larger tree limbs',
+      'Dabbling, tail goes out of water to feed',
+      'Fluffy plumage makes it seem large',
+      'Bold, sometimes attacks other birds'
+    ];
+    birdMessage = messageStrArr[getNumDay() - 1];
+    return birdMessage;
+  }
+
+  String getBirdName() {
+    String imageString;
+    String birdName;
+    imageString = getImageFileName();
+    birdName = imageString.substring(0, imageString.indexOf('.'));
+    birdName = birdName.substring(7);
+    birdName = birdName[0].toUpperCase() + birdName.substring(1);
+    return birdName;
+  }
+
 }
